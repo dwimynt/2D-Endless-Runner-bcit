@@ -9,6 +9,7 @@ public class CharacterMoveController : MonoBehaviour
     public float maxSpeed;
     
     private Rigidbody2D rig;
+    private Animator anim;
 
     [Header("Ground Raycast")]
     public float groundRaycastDistance;
@@ -23,6 +24,7 @@ public class CharacterMoveController : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();        
+        anim = GetComponent<Animator>();        
     }
 
     void FixedUpdate()
@@ -63,6 +65,9 @@ public class CharacterMoveController : MonoBehaviour
             }
         }
         
+        // change animation
+        anim.SetBool("isOnGround", isOnGround);
+
     }
 
     private void OnDrawGizmos()
