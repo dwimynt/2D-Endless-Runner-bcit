@@ -19,12 +19,14 @@ public class CharacterMoveController : MonoBehaviour
     public float jumpAccel;
     private bool isJumping;
     private bool isOnGround;
+    private CharacterSoundController sound;
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();        
         anim = GetComponent<Animator>();        
+        sound = GetComponent<CharacterSoundController>();        
     }
 
     void FixedUpdate()
@@ -62,6 +64,7 @@ public class CharacterMoveController : MonoBehaviour
             if (isOnGround)
             {
                 isJumping = true;
+                sound.PlayJump();
             }
         }
         
